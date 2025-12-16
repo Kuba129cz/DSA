@@ -10,7 +10,6 @@ class LinkedList:
     def insert_node(self, value: int):
         next_node = Node(value=value)
         
-        # najdu posledni uzel
         tail = self.head
         while(tail.next):
             tail = tail.next
@@ -22,11 +21,38 @@ class LinkedList:
         while curr:
             print(curr.val, end=", ")
             curr = curr.next
+        print() 
+
+    
+    def delete_node(self, value: int):
+        if self.head is None:
+            return # list is empty
+        
+        if self.head.val == value:
+            self.head = self.head.next
+            return
+        
+        prev = self.head
+        curr = self.head.next
+
+        while curr:
+            if curr.val == value:
+                prev.next = curr.next
+                return
+            prev = curr
+            curr = curr.next
+
+
 
 my_list = LinkedList(5)
 my_list.insert_node(10)
 my_list.insert_node(15)
 my_list.insert_node(20)
 my_list.insert_node(25)
+
+my_list.print_list()
+
+my_list.delete_node(10)
+my_list.delete_node(15)
 
 my_list.print_list()
