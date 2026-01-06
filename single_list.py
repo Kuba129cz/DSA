@@ -41,6 +41,28 @@ class LinkedList:
                 return
             prev = curr
             curr = curr.next
+    
+    def findMToLastElement(self, m: int):
+        "Retuns m Node from the last"
+
+        if self.head is None or m >= 0:
+            return None
+        
+        current : Node= self.head
+        mBehind : Node = self.head
+
+        for _ in range(0, m):
+            if current.next:
+                current = current.next
+            else:
+                return None
+        
+        while(current.next):
+            current = current.next
+            mBehind = mBehind.next
+        
+        return mBehind
+
 
 
 
